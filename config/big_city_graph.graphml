@@ -1,0 +1,843 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d11" for="edge" attr.name="type_bike" attr.type="string" />
+  <key id="d10" for="edge" attr.name="bikes" attr.type="boolean" />
+  <key id="d9" for="edge" attr.name="length" attr.type="double" />
+  <key id="d8" for="edge" attr.name="lanes" attr.type="long" />
+  <key id="d7" for="edge" attr.name="speed" attr.type="long" />
+  <key id="d6" for="edge" attr.name="type_bike" attr.type="double" />
+  <key id="d5" for="edge" attr.name="type_car" attr.type="string" />
+  <key id="d4" for="node" attr.name="type" attr.type="double" />
+  <key id="d3" for="node" attr.name="type" attr.type="string" />
+  <key id="d2" for="node" attr.name="z" attr.type="long" />
+  <key id="d1" for="node" attr.name="y" attr.type="long" />
+  <key id="d0" for="node" attr.name="x" attr.type="long" />
+  <graph edgedefault="undirected">
+    <node id="A1">
+      <data key="d0">2</data>
+      <data key="d1">13</data>
+      <data key="d2">2</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="B1">
+      <data key="d0">3</data>
+      <data key="d1">13</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="C1">
+      <data key="d0">7</data>
+      <data key="d1">13</data>
+      <data key="d2">0</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="D1">
+      <data key="d0">9</data>
+      <data key="d1">13</data>
+      <data key="d2">0</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="E1">
+      <data key="d0">0</data>
+      <data key="d1">12</data>
+      <data key="d2">2</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="F1">
+      <data key="d0">8</data>
+      <data key="d1">12</data>
+      <data key="d2">0</data>
+      <data key="d3">act</data>
+    </node>
+    <node id="G1">
+      <data key="d0">2</data>
+      <data key="d1">11</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="H1">
+      <data key="d0">6</data>
+      <data key="d1">11</data>
+      <data key="d2">0</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="I1">
+      <data key="d0">7</data>
+      <data key="d1">11</data>
+      <data key="d2">0</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="J1">
+      <data key="d0">10</data>
+      <data key="d1">11</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="K1">
+      <data key="d0">0</data>
+      <data key="d1">9</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="L1">
+      <data key="d0">1</data>
+      <data key="d1">9</data>
+      <data key="d2">0</data>
+      <data key="d3">dom</data>
+    </node>
+    <node id="M1">
+      <data key="d0">5</data>
+      <data key="d1">10</data>
+      <data key="d2">0</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="N1">
+      <data key="d0">11</data>
+      <data key="d1">10</data>
+      <data key="d2">2</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="O1">
+      <data key="d0">5</data>
+      <data key="d1">9</data>
+      <data key="d2">0</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="P1">
+      <data key="d0">6</data>
+      <data key="d1">9</data>
+      <data key="d2">0</data>
+      <data key="d3">dom</data>
+    </node>
+    <node id="Q1">
+      <data key="d0">8</data>
+      <data key="d1">9</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="R1">
+      <data key="d0">10</data>
+      <data key="d1">9</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="S1">
+      <data key="d0">0</data>
+      <data key="d1">7</data>
+      <data key="d2">0</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="T1">
+      <data key="d0">4</data>
+      <data key="d1">7</data>
+      <data key="d2">0</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="U1">
+      <data key="d0">6</data>
+      <data key="d1">8</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="V1">
+      <data key="d0">6</data>
+      <data key="d1">7</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="W1">
+      <data key="d0">8</data>
+      <data key="d1">8</data>
+      <data key="d2">1</data>
+      <data key="d3">dom</data>
+    </node>
+    <node id="X1">
+      <data key="d0">9</data>
+      <data key="d1">7</data>
+      <data key="d2">2</data>
+      <data key="d3">act</data>
+    </node>
+    <node id="Y1">
+      <data key="d0">-1</data>
+      <data key="d1">5</data>
+      <data key="d2">0</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="Z1">
+      <data key="d0">9</data>
+      <data key="d1">6</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="A2">
+      <data key="d0">10</data>
+      <data key="d1">6</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="B2">
+      <data key="d0">3</data>
+      <data key="d1">4</data>
+      <data key="d2">0</data>
+      <data key="d3">dom</data>
+    </node>
+    <node id="C2">
+      <data key="d0">6</data>
+      <data key="d1">4</data>
+      <data key="d2">1</data>
+      <data key="d3">act</data>
+    </node>
+    <node id="D2">
+      <data key="d0">8</data>
+      <data key="d1">4</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="E2">
+      <data key="d0">9</data>
+      <data key="d1">4</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="F2">
+      <data key="d0">10</data>
+      <data key="d1">4</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="G2">
+      <data key="d0">2</data>
+      <data key="d1">3</data>
+      <data key="d2">0</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="H2">
+      <data key="d0">4</data>
+      <data key="d1">3</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="I2">
+      <data key="d0">7</data>
+      <data key="d1">3</data>
+      <data key="d2">2</data>
+      <data key="d3">dom</data>
+    </node>
+    <node id="J2">
+      <data key="d0">8</data>
+      <data key="d1">3</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="K2">
+      <data key="d0">1</data>
+      <data key="d1">2</data>
+      <data key="d2">0</data>
+      <data key="d3">act</data>
+    </node>
+    <node id="L2">
+      <data key="d0">5</data>
+      <data key="d1">2</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="M2">
+      <data key="d0">6</data>
+      <data key="d1">2</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="N2">
+      <data key="d0">8</data>
+      <data key="d1">2</data>
+      <data key="d2">3</data>
+      <data key="d3">act</data>
+    </node>
+    <node id="O2">
+      <data key="d0">10</data>
+      <data key="d1">2</data>
+      <data key="d2">3</data>
+      <data key="d3">act</data>
+    </node>
+    <node id="P2">
+      <data key="d0">11</data>
+      <data key="d1">2</data>
+      <data key="d2">4</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="Q2">
+      <data key="d0">-1</data>
+      <data key="d1">1</data>
+      <data key="d2">0</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="R2">
+      <data key="d0">2</data>
+      <data key="d1">1</data>
+      <data key="d2">1</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="S2">
+      <data key="d0">5</data>
+      <data key="d1">1</data>
+      <data key="d2">2</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="T2">
+      <data key="d0">7</data>
+      <data key="d1">1</data>
+      <data key="d2">3</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="U2">
+      <data key="d0">8</data>
+      <data key="d1">1</data>
+      <data key="d2">3</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="V2">
+      <data key="d0">10</data>
+      <data key="d1">1</data>
+      <data key="d2">3</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="W2">
+      <data key="d0">11</data>
+      <data key="d1">1</data>
+      <data key="d2">4</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="X2">
+      <data key="d0">1</data>
+      <data key="d1">0</data>
+      <data key="d2">1</data>
+      <data key="d3">ext</data>
+    </node>
+    <node id="Y2">
+      <data key="d0">5</data>
+      <data key="d1">0</data>
+      <data key="d2">2</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="Z2">
+      <data key="d0">9</data>
+      <data key="d1">0</data>
+      <data key="d2">3</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="A3">
+      <data key="d0">10</data>
+      <data key="d1">0</data>
+      <data key="d2">4</data>
+      <data key="d4">nan</data>
+    </node>
+    <node id="B3">
+      <data key="d0">9</data>
+      <data key="d1">-1</data>
+      <data key="d2">4</data>
+      <data key="d3">act</data>
+    </node>
+    <node id="C3">
+      <data key="d0">9</data>
+      <data key="d1">9</data>
+      <data key="d2">1</data>
+      <data key="d3">act</data>
+    </node>
+    <edge source="A1" target="B1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="B1" target="G1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.23606797749979</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="C1" target="H1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.23606797749979</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="C1" target="D1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="E1" target="G1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.23606797749979</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="E1" target="K1">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">3.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="F1" target="I1">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="G1" target="K1">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.8284271247461903</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="G1" target="H1">
+      <data key="d5">seconday</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">4.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="H1" target="I1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="H1" target="M1">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="I1" target="O1">
+      <data key="d5">primary</data>
+      <data key="d6">nan</data>
+      <data key="d7">80</data>
+      <data key="d8">4</data>
+      <data key="d9">2.8284271247461903</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="J1" target="Q1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.8284271247461903</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="K1" target="S1">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="K1" target="L1">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="M1" target="O1">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="N1" target="R1">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_path</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="O1" target="P1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="O1" target="T1">
+      <data key="d5">primary</data>
+      <data key="d6">nan</data>
+      <data key="d7">80</data>
+      <data key="d8">4</data>
+      <data key="d9">2.23606797749979</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="Q1" target="U1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.23606797749979</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="Q1" target="C3">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="R1" target="C3">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="R1" target="A2">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_path</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">3.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="S1" target="T1">
+      <data key="d5">primary</data>
+      <data key="d6">nan</data>
+      <data key="d7">80</data>
+      <data key="d8">4</data>
+      <data key="d9">4.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="S1" target="Y1">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_path</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.23606797749979</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="T1" target="V1">
+      <data key="d5">primary</data>
+      <data key="d6">nan</data>
+      <data key="d7">80</data>
+      <data key="d8">4</data>
+      <data key="d9">2.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="T1" target="H2">
+      <data key="d5">primary</data>
+      <data key="d6">nan</data>
+      <data key="d7">80</data>
+      <data key="d8">4</data>
+      <data key="d9">4.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="U1" target="V1">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="U1" target="W1">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="X1" target="Z1">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="Z1" target="A2">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="Z1" target="E2">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="A2" target="F2">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_path</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="B2" target="G2">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_path</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="C2" target="M2">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="D2" target="E2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="D2" target="J2">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="E2" target="F2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="F2" target="O2">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="G2" target="R2">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="G2" target="K2">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="H2" target="L2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="H2" target="R2">
+      <data key="d5">primary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">80</data>
+      <data key="d8">4</data>
+      <data key="d9">2.8284271247461903</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="I2" target="J2">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="J2" target="N2">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="L2" target="S2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="L2" target="M2">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="M2" target="T2">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="N2" target="U2">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="N2" target="O2">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">2.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="O2" target="P2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="P2" target="W2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="Q2" target="R2">
+      <data key="d5">primary</data>
+      <data key="d6">nan</data>
+      <data key="d7">80</data>
+      <data key="d8">4</data>
+      <data key="d9">3.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="R2" target="X2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="S2" target="Y2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="T2" target="U2">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_path</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="T2" target="Y2">
+      <data key="d5">secondary</data>
+      <data key="d11">bike_lane</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">2.23606797749979</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="U2" target="Z2">
+      <data key="d5">tertiary</data>
+      <data key="d11">bike_path</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.4142135623730951</data>
+      <data key="d10">True</data>
+    </edge>
+    <edge source="V2" target="W2">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="V2" target="A3">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="Z2" target="A3">
+      <data key="d5">secondary</data>
+      <data key="d6">nan</data>
+      <data key="d7">50</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+    <edge source="Z2" target="B3">
+      <data key="d5">tertiary</data>
+      <data key="d6">nan</data>
+      <data key="d7">30</data>
+      <data key="d8">2</data>
+      <data key="d9">1.0</data>
+      <data key="d10">False</data>
+    </edge>
+  </graph>
+</graphml>
