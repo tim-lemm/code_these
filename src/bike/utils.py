@@ -183,3 +183,7 @@ def import_osm_graph(place_name: str, network_type: str = 'bike', simplify: bool
     # Rebuild graph and return undirected
     G2 = ox.graph_from_gdfs(gdf_nodes, gdf_edges).to_undirected()
     return G2
+
+def big_city_graph() -> nx.Graph:
+    
+    liste_nodes = 
