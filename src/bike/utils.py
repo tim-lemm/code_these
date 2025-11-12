@@ -71,7 +71,7 @@ def city_graph_generator(capacity: int, graph_number: int) -> nx.Graph:
         G.add_nodes_from(list("ABCDEFGHIJKLMNOP")[:11])
         edges = [
             ("A", "B", 5, capacity, True),
-            ("A", "D", 9, capacity, True),
+            ("A", "C", 9, capacity, True),
             ("B", "C", 3, capacity, False),
             ("C", "D", 2, capacity, True),
             ("B", "E", 6, capacity, True),
