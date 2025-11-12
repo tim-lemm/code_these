@@ -4,5 +4,6 @@ Petit dépôt pour les outils et notebooks de thèse — contient un petit packa
 
 ## Structure principale
 
-- `src/indicators/` : package Python contenant les fonctions extraites du notebook (génération d'exemples, calcul d'indicateurs, visualisation et import OSM optionnel).
-- `notebooks/indicators.ipynb` : notebook original d'où proviennent les fonctions.
+- `src/bike/` : package Python contenant les fonctions utile au projet :
+    - `indicators` : pour calculer les indicateurs d'évaluation du réseau
+    - `utils` : pour importer et afficher des graphs de test et issus d'OpenStreetMap.
