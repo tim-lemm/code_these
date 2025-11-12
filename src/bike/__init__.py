@@ -3,8 +3,6 @@
 Expose main functions for computing network indicators from the indicators notebook.
 """
 from .indicators import (
-    draw_graph,
-    city_graph_generator,
     extract_bike_friendly_subgraph,
     network_size,
     network_granularity,
@@ -16,7 +14,6 @@ from .indicators import (
     network_connectivity,
     network_density_1,
     compute_all_indicators,
-    import_osm_graph,
 )
 
 from .utils import *
