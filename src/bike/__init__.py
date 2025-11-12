@@ -2,7 +2,7 @@
 
 Expose main functions for computing network indicators from the indicators notebook.
 """
-from .core import (
+from .indicators import (
     draw_graph,
     city_graph_generator,
     extract_bike_friendly_subgraph,
@@ -18,6 +18,8 @@ from .core import (
     compute_all_indicators,
     import_osm_graph,
 )
+
+from .utils import *
 
 __all__ = [
     "draw_graph",
