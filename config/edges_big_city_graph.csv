@@ -13,7 +13,7 @@ M1,H1,tertiary,None,30,2
 M1,O1,tertiary,None,30,2
 I1,O1,primary,None,80,4
 O1,P1,secondary,None,50,2
-P1,T1,primary,None,80,4
+O1,T1,primary,None,80,4
 T1,S1,primary,None,80,4
 K1,S1,secondary,bike_lane,50,2
 K1,L1,tertiary,bike_lane,30,2
@@ -49,12 +49,13 @@ Z2,U2,tertiary,bike_path,30,2
 U2,T2,tertiary,bike_path,30,2
 T2,Y2,secondary,bike_lane,50,2
 T2,M2,tertiary,None,30,2
+M2,C2,secondary,bike_lane,50,2
 Y2,S2,secondary,None,50,2
 S2,L2,secondary,None,50,2
 L2,M2,secondary,bike_lane,50,2
 M2,L2,secondary,bike_lane,50,2
 L2,H2,secondary,None,50,2
-H2,T1, secondary,None,50,2
+H2,T1,primary,None,80,4
 H2,R2,primary,bike_lane,80,4
 R2,X2,secondary,None,50,2
 R2,Q2,primary,None,80,4

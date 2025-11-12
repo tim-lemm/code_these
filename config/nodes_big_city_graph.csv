@@ -9,8 +9,8 @@ G1,2,11,1,None
 H1,6,11,0,None
 I1,7,11,0,ext
 J1,10,11,1,None
-K1,9,0,1,None
-L1,9,1,0,dom
+K1,0,9,1,None
+L1,1,9,0,dom
 M1,5,10,0,None
 N1,11,10,2,ext
 O1,5,9,0,None
