@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-  <key id="d11" for="edge" attr.name="type_bike" attr.type="string" />
+  <key id="d13" for="edge" attr.name="type_bike" attr.type="string" />
+  <key id="d12" for="edge" attr.name="slope" attr.type="double" />
+  <key id="d11" for="edge" attr.name="green_blue_coverage" attr.type="double" />
   <key id="d10" for="edge" attr.name="bikes" attr.type="boolean" />
   <key id="d9" for="edge" attr.name="length" attr.type="double" />
   <key id="d8" for="edge" attr.name="lanes" attr.type="long" />
@@ -350,6 +352,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="B1" target="G1">
       <data key="d5">secondary</data>
@@ -358,6 +362,8 @@
       <data key="d8">2</data>
       <data key="d9">2.23606797749979</data>
       <data key="d10">False</data>
+      <data key="d11">0.0015816813724258358</data>
+      <data key="d12">-0.4472135954999579</data>
     </edge>
     <edge source="C1" target="H1">
       <data key="d5">secondary</data>
@@ -366,6 +372,8 @@
       <data key="d8">2</data>
       <data key="d9">2.23606797749979</data>
       <data key="d10">False</data>
+      <data key="d11">0.002465337939186688</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="C1" target="D1">
       <data key="d5">secondary</data>
@@ -374,6 +382,8 @@
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="E1" target="G1">
       <data key="d5">secondary</data>
@@ -382,30 +392,38 @@
       <data key="d8">2</data>
       <data key="d9">2.23606797749979</data>
       <data key="d10">False</data>
+      <data key="d11">0.0015685091493070253</data>
+      <data key="d12">-0.4472135954999579</data>
     </edge>
     <edge source="E1" target="K1">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">3.0</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">-0.3333333333333333</data>
     </edge>
     <edge source="F1" target="I1">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">True</data>
+      <data key="d11">0.002788429497643653</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="G1" target="K1">
       <data key="d5">secondary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">2.8284271247461903</data>
       <data key="d10">True</data>
+      <data key="d11">0.001411770942004578</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="G1" target="H1">
       <data key="d5">seconday</data>
@@ -414,6 +432,8 @@
       <data key="d8">2</data>
       <data key="d9">4.0</data>
       <data key="d10">False</data>
+      <data key="d11">74.99735858417307</data>
+      <data key="d12">-0.25</data>
     </edge>
     <edge source="H1" target="I1">
       <data key="d5">secondary</data>
@@ -422,6 +442,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.007043031395528058</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="H1" target="M1">
       <data key="d5">tertiary</data>
@@ -430,6 +452,8 @@
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">False</data>
+      <data key="d11">0.00561827508861199</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="I1" target="O1">
       <data key="d5">primary</data>
@@ -438,6 +462,8 @@
       <data key="d8">4</data>
       <data key="d9">2.8284271247461903</data>
       <data key="d10">False</data>
+      <data key="d11">0.0014117709420044728</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="J1" target="Q1">
       <data key="d5">secondary</data>
@@ -446,22 +472,28 @@
       <data key="d8">2</data>
       <data key="d9">2.8284271247461903</data>
       <data key="d10">False</data>
+      <data key="d11">49.99736478150088</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="K1" target="S1">
       <data key="d5">secondary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">-0.5</data>
     </edge>
     <edge source="K1" target="L1">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">-1.0</data>
     </edge>
     <edge source="M1" target="O1">
       <data key="d5">tertiary</data>
@@ -470,14 +502,18 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0034731803915026335</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="N1" target="R1">
       <data key="d5">secondary</data>
-      <data key="d11">bike_path</data>
+      <data key="d13">bike_path</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">-0.7071067811865475</data>
     </edge>
     <edge source="O1" target="P1">
       <data key="d5">secondary</data>
@@ -486,6 +522,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="O1" target="T1">
       <data key="d5">primary</data>
@@ -494,6 +532,8 @@
       <data key="d8">4</data>
       <data key="d9">2.23606797749979</data>
       <data key="d10">False</data>
+      <data key="d11">0.0031612599616779547</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="Q1" target="U1">
       <data key="d5">secondary</data>
@@ -502,6 +542,8 @@
       <data key="d8">2</data>
       <data key="d9">2.23606797749979</data>
       <data key="d10">False</data>
+      <data key="d11">0.004021808649219264</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="Q1" target="C3">
       <data key="d5">secondary</data>
@@ -510,6 +552,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">49.99647848430222</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="R1" target="C3">
       <data key="d5">secondary</data>
@@ -518,14 +562,18 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.003521515697767027</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="R1" target="A2">
       <data key="d5">secondary</data>
-      <data key="d11">bike_path</data>
+      <data key="d13">bike_path</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">3.0</data>
       <data key="d10">True</data>
+      <data key="d11">0.0011637684148446562</data>
+      <data key="d12">0.3333333333333333</data>
     </edge>
     <edge source="S1" target="T1">
       <data key="d5">primary</data>
@@ -534,14 +582,18 @@
       <data key="d8">4</data>
       <data key="d9">4.0</data>
       <data key="d10">False</data>
+      <data key="d11">62.49867929208654</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="S1" target="Y1">
       <data key="d5">secondary</data>
-      <data key="d11">bike_path</data>
+      <data key="d13">bike_path</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">2.23606797749979</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="T1" target="V1">
       <data key="d5">primary</data>
@@ -550,6 +602,8 @@
       <data key="d8">4</data>
       <data key="d9">2.0</data>
       <data key="d10">False</data>
+      <data key="d11">49.99823911813166</data>
+      <data key="d12">0.5</data>
     </edge>
     <edge source="T1" target="H2">
       <data key="d5">primary</data>
@@ -558,6 +612,8 @@
       <data key="d8">4</data>
       <data key="d9">4.0</data>
       <data key="d10">False</data>
+      <data key="d11">99.9964922370634</data>
+      <data key="d12">0.5</data>
     </edge>
     <edge source="U1" target="V1">
       <data key="d5">secondary</data>
@@ -566,6 +622,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.003491347006025226</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="U1" target="W1">
       <data key="d5">tertiary</data>
@@ -574,54 +632,68 @@
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="X1" target="Z1">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">True</data>
+      <data key="d11">0.0069976729973279285</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="Z1" target="A2">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">True</data>
+      <data key="d11">49.99647848430222</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="Z1" target="E2">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">True</data>
+      <data key="d11">99.99649181753422</data>
+      <data key="d12">-0.5</data>
     </edge>
     <edge source="A2" target="F2">
       <data key="d5">secondary</data>
-      <data key="d11">bike_path</data>
+      <data key="d13">bike_path</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">True</data>
+      <data key="d11">49.99824590876711</data>
+      <data key="d12">-0.5</data>
     </edge>
     <edge source="B2" target="G2">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_path</data>
+      <data key="d13">bike_path</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">True</data>
+      <data key="d11">0.008151407745201282</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="C2" target="M2">
       <data key="d5">secondary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">True</data>
+      <data key="d11">25.01143367193596</data>
+      <data key="d12">0.5</data>
     </edge>
     <edge source="D2" target="E2">
       <data key="d5">secondary</data>
@@ -630,6 +702,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">100.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="D2" target="J2">
       <data key="d5">tertiary</data>
@@ -638,6 +712,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">99.9929701933125</data>
+      <data key="d12">1.0</data>
     </edge>
     <edge source="E2" target="F2">
       <data key="d5">secondary</data>
@@ -646,14 +722,18 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">99.9929569686045</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="F2" target="O2">
       <data key="d5">secondary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">True</data>
+      <data key="d11">25.01143367193598</data>
+      <data key="d12">1.0</data>
     </edge>
     <edge source="G2" target="R2">
       <data key="d5">tertiary</data>
@@ -662,14 +742,18 @@
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0035194394070769317</data>
+      <data key="d12">0.5</data>
     </edge>
     <edge source="G2" target="K2">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">True</data>
+      <data key="d11">0.005663165529966622</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="H2" target="L2">
       <data key="d5">secondary</data>
@@ -678,14 +762,18 @@
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">False</data>
+      <data key="d11">0.005319805713819928</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="H2" target="R2">
       <data key="d5">primary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">80</data>
       <data key="d8">4</data>
       <data key="d9">2.8284271247461903</data>
       <data key="d10">True</data>
+      <data key="d11">0.004076377169418641</data>
+      <data key="d12">-0.35355339059327373</data>
     </edge>
     <edge source="I2" target="J2">
       <data key="d5">tertiary</data>
@@ -694,6 +782,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">49.99647848430224</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="J2" target="N2">
       <data key="d5">tertiary</data>
@@ -702,6 +792,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.007036239297280973</data>
+      <data key="d12">1.0</data>
     </edge>
     <edge source="L2" target="S2">
       <data key="d5">secondary</data>
@@ -710,14 +802,18 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="L2" target="M2">
       <data key="d5">secondary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="M2" target="T2">
       <data key="d5">tertiary</data>
@@ -726,6 +822,8 @@
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.7071067811865475</data>
     </edge>
     <edge source="N2" target="U2">
       <data key="d5">tertiary</data>
@@ -734,6 +832,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="N2" target="O2">
       <data key="d5">tertiary</data>
@@ -742,6 +842,8 @@
       <data key="d8">2</data>
       <data key="d9">2.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="O2" target="P2">
       <data key="d5">secondary</data>
@@ -750,6 +852,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">1.0</data>
     </edge>
     <edge source="P2" target="W2">
       <data key="d5">secondary</data>
@@ -758,6 +862,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="Q2" target="R2">
       <data key="d5">primary</data>
@@ -766,6 +872,8 @@
       <data key="d8">4</data>
       <data key="d9">3.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0011739488080288738</data>
+      <data key="d12">0.3333333333333333</data>
     </edge>
     <edge source="R2" target="X2">
       <data key="d5">secondary</data>
@@ -774,6 +882,8 @@
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">False</data>
+      <data key="d11">0.0028329174777718727</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="S2" target="Y2">
       <data key="d5">secondary</data>
@@ -782,30 +892,38 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="T2" target="U2">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_path</data>
+      <data key="d13">bike_path</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="T2" target="Y2">
       <data key="d5">secondary</data>
-      <data key="d11">bike_lane</data>
+      <data key="d13">bike_lane</data>
       <data key="d7">50</data>
       <data key="d8">2</data>
       <data key="d9">2.23606797749979</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">-0.4472135954999579</data>
     </edge>
     <edge source="U2" target="Z2">
       <data key="d5">tertiary</data>
-      <data key="d11">bike_path</data>
+      <data key="d13">bike_path</data>
       <data key="d7">30</data>
       <data key="d8">2</data>
       <data key="d9">1.4142135623730951</data>
       <data key="d10">True</data>
+      <data key="d11">0.0</data>
+      <data key="d12">0.0</data>
     </edge>
     <edge source="V2" target="W2">
       <data key="d5">secondary</data>
@@ -814,6 +932,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">1.0</data>
     </edge>
     <edge source="V2" target="A3">
       <data key="d5">secondary</data>
@@ -822,6 +942,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">1.0</data>
     </edge>
     <edge source="Z2" target="A3">
       <data key="d5">secondary</data>
@@ -830,6 +952,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">1.0</data>
     </edge>
     <edge source="Z2" target="B3">
       <data key="d5">tertiary</data>
@@ -838,6 +962,8 @@
       <data key="d8">2</data>
       <data key="d9">1.0</data>
       <data key="d10">False</data>
+      <data key="d11">0.0</data>
+      <data key="d12">1.0</data>
     </edge>
   </graph>
 </graphml>
