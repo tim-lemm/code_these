@@ -108,6 +108,21 @@ def network_density_1(G: nx.Graph) -> float:
     total = network_size(G)
     return float(mean_length / total) if total > 0 else 0.0
 
+def network_global_efficiency(G: nx.graph) -> float:
+    bike_sub = extract_bike_friendly_subgraph(G)
+    if bike_sub.number_of_nodes() < 2:
+        return 0.0
+    else :
+        return nx.global_efficiency(bike_sub)
+
+def network_local_efficiency(G: nx.graph) -> float:
+    bike_sub = extract_bike_friendly_subgraph(G)
+    if bike_sub.number_of_nodes() < 2:
+        return 0.0
+    else :
+        return nx.local_efficiency(bike_sub)
+
+
 
 def compute_all_indicators(G: nx.Graph) -> Dict[str, object]:
     return {
