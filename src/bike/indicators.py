@@ -135,4 +135,6 @@ def compute_all_indicators(G: nx.Graph) -> Dict[str, object]:
         "Component Sizes": network_fragmentation_sizes(G),
         "Connectivity": network_connectivity(G),
         "Density 1": network_density_1(G),
+        "Global Efficiency": network_global_efficiency(G),
+        "Local Efficiency": network_local_efficiency(G)
     }
