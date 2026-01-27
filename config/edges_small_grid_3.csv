@@ -61,3 +61,7 @@ a_node,b_node,type_car,type_bike,speed_car,speed_bike,lanes,length
 16,19,primary,None,80,15,2,3500
 14,23,primary,None,80,15,2,3500
 23,14,primary,None,80,15,2,3500
+23,15,primary,None,80,15,2,3500
+15,23,primary,None,80,15,2,3500
+25,6, primary,None,80,15,2,2500
+6,25, primary,None,80,15,2,2500
