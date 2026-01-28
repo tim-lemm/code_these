@@ -3,15 +3,9 @@ a_node,b_node,type_car,type_bike,speed_car,speed_bike
 3,1,primary,None,20,17
 2,4,primary,None,20,17
 4,2,primary,None,20,17
-1,5,primary,None,20,17
-5,1,primary,None,20,17
 1,2,primary,None,20,17
 2,1,primary,None,20,17
-2,5,primary,None,20,17
-5,2,primary,None,20,17
-4,5,primary,None,20,17
-5,4,primary,None,20,17
-3,5,primary,None,30,17
-5,3,primary,None,30,17
+4,1,primary,None,20,17
+1,4,primary,None,20,17
 4,3,primary,None,20,17
 3,4,primary,None,20,17
