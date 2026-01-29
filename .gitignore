@@ -1,1 +1,8 @@
 .vscode/settings.json
+.idea/code_these.iml
+.idea/modules.xml
+.idea/vcs.xml
+.gitignore
+.idea/inspectionProfiles/profiles_settings.xml
+scripts/__pycache__/plotting.cpython-311.pyc
+src/__pycache__/utils_sta.cpython-311.pyc
