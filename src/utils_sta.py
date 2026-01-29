@@ -235,7 +235,7 @@ def _skim_aequilibrae(edges_gdf, od_gdf, cost_field):
 # =============================================================================
 
 def ta_due(edges_gdf, od_gdf, algorithm='bfw', max_iter=500, tolerance=1e-4,
-           time_field='free_flow_time', cost_field='free_flow_time', verbose=False):
+           time_field='free_flow_time', cost_field='free_flow_time', capacity_field='capacity', verbose=False):
     """
     Deterministic User Equilibrium (DUE) traffic assignment.
     """
@@ -245,7 +245,7 @@ def ta_due(edges_gdf, od_gdf, algorithm='bfw', max_iter=500, tolerance=1e-4,
 
     network_df['alpha'] = network_df['alpha'].fillna(0.15)
     network_df['beta'] = network_df['beta'].fillna(4.0)
-    network_df['capacity'] = network_df['capacity'].fillna(99999)
+    network_df[capacity_field] = network_df[capacity_field].fillna(99999)
     network_df[time_field] = network_df[time_field].fillna(100.00)
 
     zones = int(max(od_gdf['origin'].max(), od_gdf['destination'].max()))
@@ -259,7 +259,7 @@ def ta_due(edges_gdf, od_gdf, algorithm='bfw', max_iter=500, tolerance=1e-4,
 
     g = Graph()
     g.cost = network_df[cost_field].values
-    g.capacity = network_df['capacity'].values
+    g.capacity = network_df[capacity_field].values
     g.free_flow = network_df[time_field].values
     g.network = network_df
     g.network_ok = True
@@ -275,7 +275,7 @@ def ta_due(edges_gdf, od_gdf, algorithm='bfw', max_iter=500, tolerance=1e-4,
     assignment.set_classes([traffic_class])
     assignment.set_vdf('BPR')
     assignment.set_vdf_parameters({"alpha": "alpha", "beta": "beta"})
-    assignment.set_capacity_field("capacity")
+    assignment.set_capacity_field(capacity_field)
     assignment.set_time_field(cost_field)
     assignment.set_algorithm(algorithm)
     assignment.max_iter = max_iter
@@ -297,7 +297,7 @@ def ta_due(edges_gdf, od_gdf, algorithm='bfw', max_iter=500, tolerance=1e-4,
 
         results_df['flow'] = flows
         results_df['time'] = times
-        results_df['ratio'] = flows / results_df['capacity'].replace(0, np.inf)
+        results_df['ratio'] = flows / results_df[capacity_field].replace(0, np.inf)
         convergence = pd.DataFrame(assignment.assignment.convergence_report)
 
         if verbose:
@@ -409,7 +409,7 @@ def ta_os_pt(edges_gdf, od_gdf, time_field='trav_time', freq_field='freq',
 
 
 def ta_stochastic(edges_gdf, od_gdf, mode='car',
-                  time_field='free_flow_time', cost_field='free_flow_time',
+                  time_field='free_flow_time', cost_field='free_flow_time', capacity_field='capacity',
                   algorithm='bfsle', max_routes=5, max_depth=100, max_misses=100,
                   beta=1.0, cutoff_prob=0.0, penalty=1.0, seed=0, cores=1, verbose=False):
     """
@@ -419,7 +419,7 @@ def ta_stochastic(edges_gdf, od_gdf, mode='car',
     if 'geometry' in network_df.columns:
         network_df = pd.DataFrame(network_df.drop(columns=['geometry']))
 
-    network_df['capacity'] = network_df['capacity'].fillna(99999)
+    network_df[capacity_field] = network_df[capacity_field].fillna(99999)
     network_df[time_field] = network_df[time_field].fillna(100.01)
     if cost_field != time_field:
         network_df[cost_field] = network_df[cost_field].fillna(100.01)
