@@ -77,7 +77,7 @@ def _build_graph(edges_gdf, zones, time_field='free_flow_time', cost_field='free
     return g
 
 
-def _build_graph_for_stochastic(network_df, zones, time_field, cost_field):
+def _build_graph_for_stochastic(network_df, zones, time_field, cost_field, capacity_field):
     """Build graph for stochastic assignment."""
     network_df = network_df.copy()
     network_df['direction'] = 1
@@ -87,7 +87,7 @@ def _build_graph_for_stochastic(network_df, zones, time_field, cost_field):
 
     g = Graph()
     g.cost = network_df[cost_field].values
-    g.capacity = network_df['capacity'].values
+    g.capacity = network_df[capacity_field].values
     g.free_flow = network_df[time_field].values
 
     g.network = network_df
@@ -428,7 +428,7 @@ def ta_stochastic(edges_gdf, od_gdf, mode='car',
     demand = _build_demand_matrix(od_gdf)
 
     network_df = network_df.sort_values(by=['a_node', 'b_node']).reset_index(drop=True)
-    graph = _build_graph_for_stochastic(network_df, zones, time_field, cost_field)
+    graph = _build_graph_for_stochastic(network_df, zones, time_field, cost_field, capacity_field)
 
     route_choice = RouteChoice(graph)
     route_choice.set_cores(cores)
