@@ -1,5 +1,5 @@
 #  Code Thesis
-> Main code base for my thesis
+> Main code base for my thesis (use python 3.11.14)
 
 ## Summary
 * [Curent state](#-curent-state)
