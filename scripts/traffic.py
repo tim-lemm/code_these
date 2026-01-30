@@ -126,6 +126,10 @@ def mode_choice (edge_df, node_df, od_df,
             print(f"\n--- Mode Choice Loop {j + 1} ---")
         j += 1
 
+        edge_df = update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time_car',
+                                 capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15,
+                                 beta=4)
+
         skim_car = skimming(edge_df, time_field='travel_time_car', size_od=size_od)
         skim_bike = skimming(edge_df, time_field='travel_time_bike', size_od=size_od)
         # Calculate utilities and mode share for each OD pair
@@ -152,8 +156,8 @@ def mode_choice (edge_df, node_df, od_df,
             edge_df,
             updated_od_car,
             algorithm='bfw',
-            time_field='free_flow_time',
-            cost_field='travel_time_car',
+            time_field='free_flow_time_car',
+            cost_field='free_flow_time_car',
             capacity_field='capacity_cars',
             max_iter=500,
             tolerance=1e-4,
@@ -169,8 +173,8 @@ def mode_choice (edge_df, node_df, od_df,
             edge_df,
             updated_od_bike,
             mode='bikes',
-            time_field='travel_time_bike',
-            cost_field='length_bi',  ### LENGTH OR LENGTH_BI?
+            time_field='free_flow_time_bike',
+            cost_field='free_flow_time_bike',  ### LENGTH OR LENGTH_BI?
             algorithm='bfsle',
             max_routes=3,
             capacity_field='capacity_bikes',
@@ -180,10 +184,6 @@ def mode_choice (edge_df, node_df, od_df,
         edge_df = bike_results_mode_choice['network'].copy()
         edge_df["flow_bike"] = edge_df["flow"]
         edge_df = pd.DataFrame.from_dict(edge_df)
-
-        # calculate congested time for cars
-        update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time',
-                       capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15, beta=4)
 
         results_df = update_result_df_mc(results_df, j, modal_share_car, modal_share_bike, total_travel_time_car,
                                          total_travel_time_bike, total_car_skim, total_bike_skim)
