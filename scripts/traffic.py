@@ -126,15 +126,17 @@ def mode_choice (edge_df, node_df, od_df,
             print(f"\n--- Mode Choice Loop {j + 1} ---")
         j += 1
 
+        #updating network charatetics (length bi and congested travel time)
         edge_df = update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time_car',
                                  capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15,
                                  beta=4)
-
+        #skim for car and bike
         skim_car = skimming(edge_df, time_field='travel_time_car', size_od=size_od)
         skim_bike = skimming(edge_df, time_field='travel_time_bike', size_od=size_od)
         # Calculate utilities and mode share for each OD pair
         prob_matrice_car, prob_matrice_bike = calculate_proba_matrice(skim_car, skim_bike, ASC_car, ASC_bike, beta_time,
                                                                       mu_mode, size_od)
+        #split od matrixs for both modes
         od_matrix_car = od_matrix * prob_matrice_car
         od_matrix_bike = od_matrix * prob_matrice_bike
 
@@ -146,6 +148,7 @@ def mode_choice (edge_df, node_df, od_df,
         modal_share_car = (total_car_skim / total_skim) * 100
         modal_share_bike = (total_bike_skim / total_skim) * 100
 
+        #convert od matrix for ta
         od_df_car = convert_od_matrix_to_df(od_matrix_car)
         od_df_bike = convert_od_matrix_to_df(od_matrix_bike)
         updated_od_car = convert_to_eaquilibrae_od_matrix(od_df_car)
@@ -163,6 +166,7 @@ def mode_choice (edge_df, node_df, od_df,
             tolerance=1e-4,
             verbose=plot
         )
+
         total_travel_time_car = car_results_mode_choice['total_travel_time']
         edge_df = car_results_mode_choice['network'].copy()
         edge_df["flow_car"] = edge_df["flow"]
@@ -185,6 +189,7 @@ def mode_choice (edge_df, node_df, od_df,
         edge_df["flow_bike"] = edge_df["flow"]
         edge_df = pd.DataFrame.from_dict(edge_df)
 
+        #update results_df
         results_df = update_result_df_mc(results_df, j, modal_share_car, modal_share_bike, total_travel_time_car,
                                          total_travel_time_bike, total_car_skim, total_bike_skim)
 
