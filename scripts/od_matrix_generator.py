@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-def generate_od_matrix (
+def generate_od_df (
         size_od:int,
         od_scenario:str = "RANDOM_OD",
         seed:int = 69,
@@ -23,3 +23,19 @@ def generate_od_matrix (
                 if i != j:
                     od_matrix.loc[i, j] = np.random.randint(20, max_demand)
     return od_matrix
+
+def convert_od_df_to_matrix(od_df: pd.DataFrame)-> np.ndarray:
+    size_od = len(od_df)+1
+    od_matrix = np.zeros((size_od, size_od))
+    for origin in od_df.index:
+        for destination in od_df.index:
+            od_matrix[origin, destination] = od_df.loc[origin, destination]
+    return od_matrix
+
+def convert_od_matrix_to_df(od_matrix: np.ndarray)-> pd.DataFrame:
+    size_od = len(od_matrix)
+    od_df = pd.DataFrame(index=range(1, size_od), columns=range(1, size_od))
+    for origin in od_df.index:
+        for destination in od_df.index:
+            od_df.loc[origin, destination] = od_matrix[origin, destination]
+    return od_df
