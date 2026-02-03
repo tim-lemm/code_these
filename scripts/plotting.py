@@ -158,7 +158,7 @@ def plot_network(edges_df, nodes_df, ax=None, figsize=(10, 10), node_x_col='x', 
 
 
 def plot_od_matrix(od_matrix, edges_df, nodes_df, ax=None, figsize=(10, 10), cmap='viridis', title='OD Matrix',
-                   label=True, color='red', vmax=None):
+                   label=False, color='red', vmax=None):
     """ Plot OD matrix as arrows on the network."""
     if ax is None:
         fig, ax = plt.subplots(figsize=figsize)

@@ -53,7 +53,7 @@ def import_network(edge_filepath:str, node_filepath:str, capacity_car:int = 3000
     node_df = pd.read_csv(node_filepath)
 
     edge_df = calculate_length(node_df, edge_df)
-    edge_df["length"] *= 10
+    #edge_df["length"] *= 10
     edge_df["type_bike"] = None
     edge_df["speed_bike"] /= 3.6
     edge_df["speed_car"] /= 3.6
