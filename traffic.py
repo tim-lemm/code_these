@@ -86,10 +86,10 @@ def plot_mc_results(edge_df, node_df, results_df):
     fig, axes = plt.subplots(2, 2, figsize=(10, 10))
     plot_network(edge_df, node_df, width_col='flow_car', color_col_num='flow_car', cmap='Reds',
                  title=f'Car flows- Mode Choice Assignment ', node_size=3, colorbar_label='Flow (cars)',
-                 base_width=0.01, width_scale=5, ax=axes[0, 0])
+                 base_width=1, width_scale=50, ax=axes[0, 0])
     plot_network(edge_df, node_df, width_col='flow_bike', color_col_num='flow_bike', cmap='Greens',
                  title=f'Bike flows - Mode Choice Assignment ', node_size=3, colorbar_label='Flow (bikes)',
-                 base_width=0.1, width_scale=50, ax=axes[0, 1])
+                 base_width=1, width_scale=50, ax=axes[0, 1])
     plot_network(edge_df, node_df, color_col_num='travel_time_car', cmap='hot_r', title=f'Car Travel Time',
                  node_size=3, colorbar_label='Travel Time (s)', base_width=1, ax=axes[1, 0])
     plot_network(edge_df, node_df, color_col_num='travel_time_bike', cmap='hot_r', title=f'Bike Travel Time',
@@ -113,9 +113,9 @@ def mode_choice (edge_df, node_df, od_df,
                  beta_time = -0.01,
                  ASC_car = 0,
                  ASC_bike = -2.5,
-                 mu_mode = 1.0,
-                 max_iter_mode_choice = 3,
-                 plot = True) :
+                mu_mode = 1.0,
+                max_iter_mode_choice = 3,
+                plot = True) :
 
     od_matrix = convert_od_df_to_matrix(od_df)
     size_od = len(od_matrix)
@@ -125,13 +125,12 @@ def mode_choice (edge_df, node_df, od_df,
         if plot:
             print(f"\n--- Mode Choice Loop {j + 1} ---")
         j += 1
-        #skim for car and bike
+
         skim_car = skimming(edge_df, time_field='travel_time_car', size_od=size_od)
         skim_bike = skimming(edge_df, time_field='travel_time_bike', size_od=size_od)
         # Calculate utilities and mode share for each OD pair
         prob_matrice_car, prob_matrice_bike = calculate_proba_matrice(skim_car, skim_bike, ASC_car, ASC_bike, beta_time,
                                                                       mu_mode, size_od)
-        #split od matrixs for both modes
         od_matrix_car = od_matrix * prob_matrice_car
         od_matrix_bike = od_matrix * prob_matrice_bike
 
@@ -143,7 +142,6 @@ def mode_choice (edge_df, node_df, od_df,
         modal_share_car = (total_car_skim / total_skim) * 100
         modal_share_bike = (total_bike_skim / total_skim) * 100
 
-        #convert od matrix for ta
         od_df_car = convert_od_matrix_to_df(od_matrix_car)
         od_df_bike = convert_od_matrix_to_df(od_matrix_bike)
         updated_od_car = convert_to_eaquilibrae_od_matrix(od_df_car)
@@ -154,29 +152,25 @@ def mode_choice (edge_df, node_df, od_df,
             edge_df,
             updated_od_car,
             algorithm='bfw',
-            time_field='free_flow_time_car',
-            cost_field='free_flow_time_car',
+            time_field='travel_time_car',
+            cost_field='length',
             capacity_field='capacity_cars',
             max_iter=500,
             tolerance=1e-4,
             verbose=plot
         )
-
         total_travel_time_car = car_results_mode_choice['total_travel_time']
         edge_df = car_results_mode_choice['network'].copy()
         edge_df["flow_car"] = edge_df["flow"]
         edge_df["ratio_flow_capacity_car"] = edge_df["ratio"]
         edge_df = pd.DataFrame.from_dict(edge_df)
 
-        edge_df = calculate_length_bi(edge_df)
-        edge_df["travel_time_bike"] = edge_df["length_bi"]/edge_df["speed_bike"]
-
         bike_results_mode_choice = ta_stochastic(
             edge_df,
             updated_od_bike,
             mode='bikes',
-            time_field='free_flow_time_bike',
-            cost_field='free_flow_time_bike',  ### LENGTH OR LENGTH_BI OR FREE FLOW TT OR TT?
+            time_field='travel_time_bike',
+            cost_field='length_bi',  ### LENGTH OR LENGTH_BI?
             algorithm='bfsle',
             max_routes=3,
             capacity_field='capacity_bikes',
@@ -187,16 +181,13 @@ def mode_choice (edge_df, node_df, od_df,
         edge_df["flow_bike"] = edge_df["flow"]
         edge_df = pd.DataFrame.from_dict(edge_df)
 
-        # updating network charatetics (length bi and congested travel time)
-        edge_df = update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time_car',
-                                 capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15,
-                                 beta=4)
+        # calculate congested time for cars
+        update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time',
+                       capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15, beta=4)
 
-        #update results_df
         results_df = update_result_df_mc(results_df, j, modal_share_car, modal_share_bike, total_travel_time_car,
                                          total_travel_time_bike, total_car_skim, total_bike_skim)
 
-    print(f"Total demand = {od_df.sum().sum()}")
     print(
         f"Mode shares with skimming: Car = {total_car_skim / (total_car_skim + total_bike_skim) * 100 :.3f} %, Bike = {total_bike_skim / (total_car_skim + total_bike_skim) * 100:.3f}%")
     if plot:
