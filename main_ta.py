@@ -9,12 +9,12 @@ import warnings
 import logging
 import sys
 
-from scripts.traffic import *
+from traffic import *
 from src.utils_sta import ta_due, ta_stochastic, plot_vc_histogram
-from scripts.network_processing import *
-from scripts.plotting import *
-from scripts.od_matrix_generator import generate_od_df, convert_od_df_to_matrix, convert_od_matrix_to_df
-from scripts.eaquilibrea_interface import *
+from network_processing import *
+from plotting import *
+from od_matrix_generator import generate_od_df, convert_od_df_to_matrix, convert_od_matrix_to_df
+from eaquilibrea_interface import *
 
 from aequilibrae.paths import RouteChoice
 from aequilibrae.matrix import AequilibraeMatrix

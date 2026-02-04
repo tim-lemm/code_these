@@ -12,3 +12,11 @@ scripts/__pycache__/network_processing.cpython-311.pyc
 scripts/__pycache__/od_matrix_generator.cpython-311.pyc
 scripts/__pycache__/traffic.cpython-311.pyc
 .idea/workspace.xml
+__pycache__/eaquilibrea_interface.cpython-311.pyc
+__pycache__/network_processing.cpython-311.pyc
+__pycache__/od_matrix_generator.cpython-311.pyc
+__pycache__/plotting.cpython-311.pyc
+__pycache__/traffic.cpython-311.pyc
+_old/
+.idea/
+.venv/
