@@ -43,7 +43,7 @@ beta_time = -0.01
 ASC_car = 0
 ASC_bike = -2.5
 mu_mode = 1.0
-max_iter_mode_choice = 1
+max_iter_mode_choice = 5
 plot = True
 size_od = max(node_df['node']) + 1
 

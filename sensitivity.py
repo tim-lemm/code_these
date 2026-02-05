@@ -7,6 +7,7 @@ from od_matrix_generator import *
 from eaquilibrea_interface import *
 from network_processing import *
 from src.utils_sta import ta_due, ta_stochastic
+from traffic import mode_choice
 
 CURRENT_DIR = ""
 
@@ -40,29 +41,29 @@ list_algorithm = ['bfw', 'fw', 'msa']
 
 ###processing sensitivity analysis on ta_sto
 
-list_algorithm = ['bfsle', 'lp']
-list_max_route = [1,2,3,4,5]
-df_results = pd.DataFrame()
-for algorithm in list_algorithm:
-    for scenario in list_od_scenarios:
-        for max_demand in list_max_demand:
-
-            od_df = generate_od_df(17, od_scenario=scenario, max_demand=max_demand)
-            od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
-            for max_route in list_max_route:
-                name = f"{algorithm}_{max_route}_{scenario}_{max_demand}"
-                results_ta_sto = ta_stochastic(edge_df,
-                                               od_df_eaq,
-                                               mode='bikes',
-                                               time_field='free_flow_time_bike',
-                                               cost_field='free_flow_time_bike',  ### LENGTH OR LENGTH_BI?
-                                               algorithm=algorithm,
-                                               max_routes=max_route,
-                                               capacity_field='capacity_bikes',
-                                               verbose=True)
-                df_results[name] = results_ta_sto
-
-df_results.to_json(f"{CURRENT_DIR}output/sensitivity_sto.json")
+# list_algorithm = ['bfsle', 'lp']
+# list_max_route = [1,2,3,4,5]
+# df_results = pd.DataFrame()
+# for algorithm in list_algorithm:
+#     for scenario in list_od_scenarios:
+#         for max_demand in list_max_demand:
+#
+#             od_df = generate_od_df(17, od_scenario=scenario, max_demand=max_demand)
+#             od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+#             for max_route in list_max_route:
+#                 name = f"{algorithm}_{max_route}_{scenario}_{max_demand}"
+#                 results_ta_sto = ta_stochastic(edge_df,
+#                                                od_df_eaq,
+#                                                mode='bikes',
+#                                                time_field='free_flow_time_bike',
+#                                                cost_field='free_flow_time_bike',  ### LENGTH OR LENGTH_BI?
+#                                                algorithm=algorithm,
+#                                                max_routes=max_route,
+#                                                capacity_field='capacity_bikes',
+#                                                verbose=True)
+#                 df_results[name] = results_ta_sto
+#
+# df_results.to_json(f"{CURRENT_DIR}output/sensitivity_sto.json")
 
 
 ### getting total demand from the different scenario of OD
@@ -81,3 +82,33 @@ df_results.to_json(f"{CURRENT_DIR}output/sensitivity_sto.json")
 # df_demand = pd.DataFrame(rows_list)
 #
 # df_demand.to_json(f"{CURRENT_DIR}output/demand.json")
+
+### Processing mode_choice sensitivity
+# parameters for mode choice
+list_asc_bike = [-2.5,0,2.5]
+beta_time = -0.01
+ASC_car = 0
+mu_mode = 1.0
+max_iter_mode_choice = 5
+plot = False
+size_od = 17
+
+df_results_mc = pd.DataFrame()
+
+for ASC_bike in list_asc_bike:
+    for scenario in list_od_scenarios:
+        for max_demand in list_max_demand:
+            name = f"{scenario}_{max_demand}_{ASC_bike}"
+            od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
+            od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+
+            result_df,_,_ = mode_choice(edge_df,
+                                        node_df,
+                                        od_df,
+                                        beta_time=beta_time,
+                                        mu_mode=mu_mode,
+                                        max_iter_mode_choice=max_iter_mode_choice,
+                                        plot=plot)
+            df_results_mc[name] = {"results_df":result_df}
+
+df_results_mc.to_json(f"{CURRENT_DIR}output/sensitivity_mc.json")

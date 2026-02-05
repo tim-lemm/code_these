@@ -182,7 +182,7 @@ def mode_choice (edge_df, node_df, od_df,
         edge_df = pd.DataFrame.from_dict(edge_df)
 
         # calculate congested time for cars
-        update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time',
+        update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time_car',
                        capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15, beta=4)
 
         results_df = update_result_df_mc(results_df, j, modal_share_car, modal_share_bike, total_travel_time_car,
