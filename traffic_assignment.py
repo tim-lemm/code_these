@@ -19,7 +19,7 @@ from eaquilibrea_interface import *
 from aequilibrae.paths import RouteChoice
 from aequilibrae.matrix import AequilibraeMatrix
 
-#TODO: rename file
+
 
 CURRENT_DIR = "/Users/tristan.lemoalle/Documents/Thèse/Code/code_these/"
 
