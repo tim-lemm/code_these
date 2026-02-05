@@ -85,7 +85,7 @@ list_algorithm = ['bfw', 'fw', 'msa']
 
 ### Processing mode_choice sensitivity
 # parameters for mode choice
-list_asc_bike = [-2.5,0,2.5]
+list_asc_bike = [-2.5,-1,0]
 beta_time = -0.01
 ASC_car = 0
 mu_mode = 1.0
@@ -108,7 +108,10 @@ for ASC_bike in list_asc_bike:
                                         beta_time=beta_time,
                                         mu_mode=mu_mode,
                                         max_iter_mode_choice=max_iter_mode_choice,
+                                        ASC_bike=ASC_bike,
                                         plot=plot)
             df_results_mc[name] = {"results_df":result_df}
 
 df_results_mc.to_json(f"{CURRENT_DIR}output/sensitivity_mc.json")
+
+#TODO: test with different version of mode_choice (order, weights etc...)
