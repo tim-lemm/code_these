@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from od_matrix_generator import generate_od_df
-import ast
+
 
 
 CURRENT_DIR = ""
@@ -10,6 +10,9 @@ df_results_due = pd.read_json(f"{CURRENT_DIR}output/sensitivity_due.json")
 df_results_sto = pd.read_json(f"{CURRENT_DIR}output/sensitivity_sto.json")
 df_results_mc = pd.read_json(f"{CURRENT_DIR}output/sensitivity_mc.json")
 df_results_mc_beta = pd.read_json(f"{CURRENT_DIR}output/sensitivity_mc_beta.json")
+df_results_mc_order = pd.read_json(f"{CURRENT_DIR}output/sensitivity_mc_order.json")
+df_results_mc_time_cost = pd.read_json(f"{CURRENT_DIR}output/sensitivity_mc_time_cost.json")
+df_results_mc_skim_cost = pd.read_json(f"{CURRENT_DIR}output/sensitivity_mc_skim_cost.json")
 df_demand = pd.read_json(f"{CURRENT_DIR}output/demand.json")
 
 list_od_scenarios=['1OD','2OD',"RANDOM_OD"]
@@ -144,18 +147,10 @@ j = 0
 for ASC_bike in list_asc_bike:
     i = 0
     for scenario in list_od_scenarios:
-        y_4 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.0001"]["results_df"]["modal_share_bike"]
-        y_4 = list(y_4.values())
-        y_3 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.001"]["results_df"]["modal_share_bike"]
-        y_3 = list(y_3.values())
-        y_2 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.01"]["results_df"]["modal_share_bike"]
-        y_2 = list(y_2.values())
-        y_1 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.1"]["results_df"]["modal_share_bike"]
-        y_1 = list(y_1.values())
-        axes[i,j].plot(x, y_4, marker='v', color='blue', label='-0,0001')
-        axes[i,j].plot(x, y_3, marker='o', color='red', label='-0,001')
-        axes[i,j].plot(x, y_2, marker='^', color='green', label='-0,01')
-        axes[i,j].plot(x, y_1, marker='>', color='yellow', label='-0,1')
+        for beta in list_beta_time :
+            y = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_{beta}"]["results_df"]["modal_share_bike"]
+            y = list(y.values())
+            axes[i,j].plot(x, y, marker='o', label=beta)
         axes[i,j].legend(title="beta")
         axes[i,j].set_title(f"{scenario}_{ASC_bike}")
         axes[i,j].set_xlabel("Iteration")
@@ -166,4 +161,81 @@ for ASC_bike in list_asc_bike:
 plt.tight_layout()
 plt.show()
 
+## plot for different version of mode_choice function
 
+fig, axes = plt.subplots(2,3, figsize=(30,20))
+
+ASC_bike = -2.5
+x = [0,1,2,3,4]
+list_version = ["mc1", "mc2", "mc4"]
+list_bis = ["","bis"]
+j=0
+for version in list_version:
+    i = 0
+    for bis in list_bis:
+        for max_demand in list_max_demand:
+            y = df_results_mc_order[f'{scenario}_{max_demand}_{ASC_bike}_{version}{bis}']["results_df"]["modal_share_bike"]
+            y = list(y.values())
+            axes[i, j].plot(x, y, marker='o', label=max_demand)
+        axes[i,j].legend(title="max demand")
+        axes[i,j].set_title(f"{version}{bis}")
+        axes[i,j].set_xlabel("Iteration")
+        axes[i,j].set_ylabel("Modal Share of bike (%)")
+        axes[i,j].grid(alpha=0.5)
+        i +=1
+    j +=1
+plt.tight_layout()
+plt.show()
+
+
+fig, axes = plt.subplots(2,3, figsize=(30,20))
+ASC_bike = -2.5
+beta_time = -0.01
+scenario = "RANDOM_OD"
+list_cost_field = ["free_flow_time_car", "travel_time_car","length"]
+list_time_field = ["free_flow_time_car", "travel_time_car"]
+
+
+j=0
+for cost_field in list_cost_field:
+    i = 0
+    for time_field in list_time_field:
+        for max_demand in list_max_demand:
+            y = df_results_mc_time_cost[ f'{scenario}_{max_demand}_{ASC_bike}_{time_field}_{cost_field}']["results_df"]["modal_share_bike"]
+            y = list(y.values())
+            axes[i, j].plot(x, y,marker='o', label=max_demand)
+        axes[i,j].legend(title="max demand")
+        axes[i,j].set_title(f"{time_field}_{cost_field}")
+        axes[i,j].set_xlabel("Iteration")
+        axes[i,j].set_ylabel("Modal Share of bike (%)")
+        axes[i,j].grid(alpha=0.5)
+        i +=1
+    j +=1
+plt.tight_layout()
+plt.show()
+
+fig, axes = plt.subplots(3,4, figsize=(40,30))
+ASC_bike = -2.5
+beta_time = -0.01
+scenario = "RANDOM_OD"
+list_cost_bike = ["travel_time_bike", "free_flow_time_bike","length", "length_bi"]
+list_cost_car = ["travel_time_car","free_flow_time_car", "length"]
+
+
+j=0
+for cost_bike in list_cost_bike:
+    i = 0
+    for cost_car in list_cost_car:
+        for max_demand in list_max_demand:
+            y = df_results_mc_skim_cost[ f'{scenario}_{max_demand}_{ASC_bike}_{cost_bike}_{cost_car}']["results_df"]["modal_share_bike"]
+            y = list(y.values())
+            axes[i, j].plot(x, y,marker='o', label=max_demand)
+        axes[i,j].legend(title="max demand")
+        axes[i,j].set_title(f"Skim cost bike : {cost_bike} / Skim cost car : {cost_car}")
+        axes[i,j].set_xlabel("Iteration")
+        axes[i,j].set_ylabel("Modal Share of bike (%)")
+        axes[i,j].grid(alpha=0.5)
+        i +=1
+    j +=1
+plt.tight_layout()
+plt.show()
