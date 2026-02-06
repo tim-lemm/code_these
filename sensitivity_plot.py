@@ -40,7 +40,7 @@ for algorithm in list_algorithm:
 axes[2,1].set_xlabel("Iteration")
 axes[1,0].set_ylabel("rgap")
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_ta_due_algo.png")
 
 ## Plotting total travel time vs total demand
 fig, axes = plt.subplots(3,3, figsize=(30,20))
@@ -63,7 +63,7 @@ for algorithm in list_algorithm:
 axes[2,1].set_xlabel("Total Demand")
 axes[1,0].set_ylabel("Total Travel Time")
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_ta_due_algo_tt_vs_tdemand.png")
 
 ### Plot for ta_sto
 list_algorithm = ["bfsle","lp"]
@@ -100,7 +100,7 @@ for scenario in list_od_scenarios:
 axes[2,1].set_xlabel("Total Demand")
 axes[1,0].set_ylabel("Total Travel Time")
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_ta_sto.png")
 
 ### plot sensitivity for mode choice
 ## plot mode share for iteration - test of od and ASC
@@ -137,7 +137,7 @@ for ASC_bike in list_asc_bike:
         i +=1
     j +=1
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_mc_od_asc.png")
 
 ## plot mode share for iteration - test for beta and ASC
 max_demand = 5000
@@ -159,7 +159,7 @@ for ASC_bike in list_asc_bike:
         i +=1
     j += 1
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_mc_beta_asc.png")
 
 ## plot for different version of mode_choice function
 
@@ -185,8 +185,9 @@ for version in list_version:
         i +=1
     j +=1
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_mc_od_version.png")
 
+## plot for different time and cost field for ta_due
 
 fig, axes = plt.subplots(2,3, figsize=(30,20))
 ASC_bike = -2.5
@@ -212,14 +213,15 @@ for cost_field in list_cost_field:
         i +=1
     j +=1
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_mc_cost_due.png")
 
+# plot for different skim cost
 fig, axes = plt.subplots(3,4, figsize=(40,30))
 ASC_bike = -2.5
 beta_time = -0.01
 scenario = "RANDOM_OD"
-list_cost_bike = ["travel_time_bike", "free_flow_time_bike","length", "length_bi"]
-list_cost_car = ["travel_time_car","free_flow_time_car", "length"]
+list_cost_bike = ["travel_time_bike","free_flow_time_bike","length","length_bi"]
+list_cost_car = ["travel_time_car","free_flow_time_car","length"]
 
 
 j=0
@@ -238,4 +240,4 @@ for cost_bike in list_cost_bike:
         i +=1
     j +=1
 plt.tight_layout()
-plt.show()
+plt.savefig(f"{CURRENT_DIR}output/img/sensitivity_mc_cost_skim.png")
