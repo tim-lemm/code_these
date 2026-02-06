@@ -93,25 +93,48 @@ max_iter_mode_choice = 5
 plot = False
 size_od = 17
 
-df_results_mc = pd.DataFrame()
+# df_results_mc = pd.DataFrame()
+#
+# for ASC_bike in list_asc_bike:
+#     for scenario in list_od_scenarios:
+#         for max_demand in list_max_demand:
+#             name = f"{scenario}_{max_demand}_{ASC_bike}"
+#             od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
+#             od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+#
+#             result_df,_,_ = mode_choice(edge_df,
+#                                         node_df,
+#                                         od_df,
+#                                         beta_time=beta_time,
+#                                         mu_mode=mu_mode,
+#                                         max_iter_mode_choice=max_iter_mode_choice,
+#                                         ASC_bike=ASC_bike,
+#                                         plot=plot)
+#             df_results_mc[name] = {"results_df":result_df}
+#
+# df_results_mc.to_json(f"{CURRENT_DIR}output/sensitivity_mc.json")
 
-for ASC_bike in list_asc_bike:
-    for scenario in list_od_scenarios:
-        for max_demand in list_max_demand:
-            name = f"{scenario}_{max_demand}_{ASC_bike}"
+
+max_demand = 5000
+df_results_mc_beta = pd.DataFrame()
+list_beta_time = [-0.0001, -0.001, -0.01, -0.1]
+for scenario in list_od_scenarios:
+    for ASC_bike in list_asc_bike:
+        for beta_time in list_beta_time:
+            name = f'{scenario}_{max_demand}_{ASC_bike}_{beta_time}'
             od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
             od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
 
-            result_df,_,_ = mode_choice(edge_df,
-                                        node_df,
-                                        od_df,
-                                        beta_time=beta_time,
-                                        mu_mode=mu_mode,
-                                        max_iter_mode_choice=max_iter_mode_choice,
-                                        ASC_bike=ASC_bike,
-                                        plot=plot)
-            df_results_mc[name] = {"results_df":result_df}
+            result_df, _, _ = mode_choice(edge_df,
+                                          node_df,
+                                          od_df,
+                                          beta_time=beta_time,
+                                          mu_mode=mu_mode,
+                                          max_iter_mode_choice=max_iter_mode_choice,
+                                          ASC_bike=ASC_bike,
+                                          plot=plot)
+            df_results_mc_beta[name] = {"results_df":result_df}
 
-df_results_mc.to_json(f"{CURRENT_DIR}output/sensitivity_mc.json")
+df_results_mc_beta.to_json(f"{CURRENT_DIR}output/sensitivity_mc_beta.json")
 
 #TODO: test with different version of mode_choice (order, weights etc...)

@@ -3,15 +3,19 @@ import pandas as pd
 from od_matrix_generator import generate_od_df
 import ast
 
+
 CURRENT_DIR = ""
 
 df_results_due = pd.read_json(f"{CURRENT_DIR}output/sensitivity_due.json")
 df_results_sto = pd.read_json(f"{CURRENT_DIR}output/sensitivity_sto.json")
 df_results_mc = pd.read_json(f"{CURRENT_DIR}output/sensitivity_mc.json")
+df_results_mc_beta = pd.read_json(f"{CURRENT_DIR}output/sensitivity_mc_beta.json")
 df_demand = pd.read_json(f"{CURRENT_DIR}output/demand.json")
 
 list_od_scenarios=['1OD','2OD',"RANDOM_OD"]
 list_max_demand = [500,1000,2000,3000,4000,5000]
+list_asc_bike = [-2.5,-1,0]
+list_beta_time = [-0.0001,-0.001,-0.01,-0.1]
 
 ### Plots for ta_due
 ## Plotting convergence
@@ -96,8 +100,8 @@ plt.tight_layout()
 plt.show()
 
 ### plot sensitivity for mode choice
-## plot mode share for iteration
-list_asc_bike = [-2.5,-1,0]
+## plot mode share for iteration - test of od and ASC
+
 fig, axes = plt.subplots(3,3, figsize=(30,30))
 x = [0,1,2,3,4]
 j=0
@@ -125,14 +129,41 @@ for ASC_bike in list_asc_bike:
         axes[i,j].legend(title="max demand")
         axes[i,j].set_title(f"{scenario}_{ASC_bike}")
         axes[i,j].set_xlabel("Iteration")
-        axes[i,j].set_ylabel("Modal Share")
+        axes[i,j].set_ylabel("Modal Share of bike (%)")
         axes[i,j].grid(alpha=0.5)
         i +=1
     j +=1
 plt.tight_layout()
 plt.show()
 
-
-
+## plot mode share for iteration - test for beta and ASC
+max_demand = 5000
+fig, axes = plt.subplots(3,3, figsize=(30,30))
+x = [0,1,2,3,4]
+j = 0
+for ASC_bike in list_asc_bike:
+    i = 0
+    for scenario in list_od_scenarios:
+        y_4 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.0001"]["results_df"]["modal_share_bike"]
+        y_4 = list(y_4.values())
+        y_3 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.001"]["results_df"]["modal_share_bike"]
+        y_3 = list(y_3.values())
+        y_2 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.01"]["results_df"]["modal_share_bike"]
+        y_2 = list(y_2.values())
+        y_1 = df_results_mc_beta[f"{scenario}_{max_demand}_{ASC_bike}_-0.1"]["results_df"]["modal_share_bike"]
+        y_1 = list(y_1.values())
+        axes[i,j].plot(x, y_4, marker='v', color='blue', label='-0,0001')
+        axes[i,j].plot(x, y_3, marker='o', color='red', label='-0,001')
+        axes[i,j].plot(x, y_2, marker='^', color='green', label='-0,01')
+        axes[i,j].plot(x, y_1, marker='>', color='yellow', label='-0,1')
+        axes[i,j].legend(title="beta")
+        axes[i,j].set_title(f"{scenario}_{ASC_bike}")
+        axes[i,j].set_xlabel("Iteration")
+        axes[i,j].set_ylabel("Modal Share of bike (%)")
+        axes[i,j].grid(alpha=0.5)
+        i +=1
+    j += 1
+plt.tight_layout()
+plt.show()
 
 
