@@ -1,23 +1,11 @@
-from pathlib import Path
-import pandas as pd
-import networkx as nx
-import numpy as np
-import matplotlib.pyplot as plt
-import networkx as nx
-import matplotlib.cm as cm
 import warnings
 import logging
-import sys
-
-from traffic import *
 from src.utils_sta import ta_due, ta_stochastic, plot_vc_histogram
 from network_processing import *
 from plotting import *
-from od_matrix_generator import generate_od_df, convert_od_df_to_matrix, convert_od_matrix_to_df
+from od_matrix_generator import generate_od_df
 from eaquilibrea_interface import *
-
-from aequilibrae.paths import RouteChoice
-from aequilibrae.matrix import AequilibraeMatrix
+from config import parameter
 
 
 
@@ -42,12 +30,18 @@ od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
 plot_od_matrix(od_df_eaq, edge_df, node_df)
 plt.show()
 
+parameter_dict = parameter()
+algorithm_due = parameter_dict['ta_due_algorithm']
+algorithm_sto = parameter_dict['ta_sto_algorithm']
+max_iter = parameter_dict['max_iter_ta']
+tolerance = parameter_dict['tolerance']
+max_route = parameter_dict['max_route']
 ## ta_due tests
 results_ta_due = ta_due(edge_df,
                         od_df_eaq,
-                        algorithm='bfw',
-                        max_iter=500,
-                        tolerance=1e-4,
+                        algorithm=algorithm_due,
+                        max_iter=max_iter,
+                        tolerance=tolerance,
                         time_field='free_flow_time_car',
                         cost_field='free_flow_time_car',
                         capacity_field='capacity_cars',
@@ -64,8 +58,8 @@ results_ta_sto = ta_stochastic(edge_df,
                                 mode='bikes',
                                 time_field='free_flow_time_bike',
                                 cost_field='free_flow_time_bike',  ### LENGTH OR LENGTH_BI?
-                                algorithm='bfsle',
-                                max_routes=3,
+                                algorithm=algorithm_sto,
+                                max_routes=max_route,
                                 capacity_field='capacity_bikes',
                                 verbose=True)
 

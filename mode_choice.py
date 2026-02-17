@@ -1,25 +1,11 @@
-from pathlib import Path
-import pandas as pd
-import networkx as nx
-import numpy as np
-import matplotlib.pyplot as plt
-import networkx as nx
-import matplotlib.cm as cm
 import warnings
 import logging
-import sys
-
 from traffic import *
-from src.utils_sta import ta_due, ta_stochastic, plot_vc_histogram
 from network_processing import *
 from plotting import *
-from od_matrix_generator import generate_od_df, convert_od_df_to_matrix, convert_od_matrix_to_df
-from eaquilibrea_interface import *
+from od_matrix_generator import generate_od_df
+from config import parameter
 
-from aequilibrae.paths import RouteChoice
-from aequilibrae.matrix import AequilibraeMatrix
-
-#TODO: impement a parameter() function or config file
 #TODO: update readme
 
 CURRENT_DIR = "/Users/tristan.lemoalle/Documents/Thèse/Code/code_these/"
@@ -33,20 +19,29 @@ plot_network(edge_df, node_df,
              node_label=True,
              color_col_num='travel_time_car',
              base_width=1,
-             legend=True,
+             legend=False,
              title="Network with Free Flow Time",
              figsize=(8, 8))
 
 
 # parameters for mode choice
-beta_time = -0.01
-ASC_car = 0
-ASC_bike = -2.5
-mu_mode = 1.0
-max_iter_mode_choice = 5
+parameter_dict = parameter()
+beta_time = parameter_dict['beta_time']
+ASC_car = parameter_dict['ASC_car']
+ASC_bike = parameter_dict['ASC_bike']
+mu_mode = parameter_dict['mu_mode']
+max_iter_mode_choice = parameter_dict['max_iter_mode_choice']
 plot = True
 size_od = max(node_df['node']) + 1
 
-od_df = generate_od_df(size_od, od_scenario="RANDOM_OD", max_demand=1000)
+od_df = generate_od_df(size_od, od_scenario="RANDOM_OD", max_demand=300)
 
-result_df, updated_od_car, updated_od_bike = mode_choice(edge_df, node_df, od_df, beta_time=beta_time, mu_mode=mu_mode, max_iter_mode_choice=max_iter_mode_choice, plot=plot)
+result_df, updated_od_car, updated_od_bike = mode_choice(edge_df,
+                                                         node_df,
+                                                         od_df,
+                                                         beta_time,
+                                                         ASC_car,
+                                                         ASC_bike,
+                                                         mu_mode=mu_mode,
+                                                         max_iter_mode_choice=max_iter_mode_choice,
+                                                         plot=plot)

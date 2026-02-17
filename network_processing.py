@@ -12,20 +12,22 @@ def calculate_length(node_df, edge_df):
         lengths.append(length)
     return edge_df.assign(length=lengths)
 
-def calculate_length_bi(edge_df):
+def calculate_length_bi(edge_df, weight = 0):
+    if weight > 0.5 or weight < -0.2 :
+        raise ValueError("Weight must be between 0.5 and -0.2")
     list_length_bi = []
     for row in edge_df.itertuples():
         if row.type_bike is None:
             if row.flow_car < 800:
-                list_length_bi.append(row.length * 0.8)
+                list_length_bi.append(row.length * (0.8 - weight))
             elif row.flow_car >= 4000:
-                list_length_bi.append(row.length * 1.4)
+                list_length_bi.append(row.length * (1.4 + weight))
             elif 800 <= row.flow_car < 1000:
                 list_length_bi.append(row.length * 1)
             elif 1000 <= row.flow_car < 4000:
-                list_length_bi.append(row.length * 1.2)
+                list_length_bi.append(row.length * (1.2 + weight))
         else:
-            list_length_bi.append(row.length * 0.5)
+            list_length_bi.append(row.length * (0.5 - weight))
     edge_df["length_bi"] = list_length_bi
     return edge_df
 
