@@ -32,6 +32,7 @@ ASC_bike = parameter_dict['ASC_bike']
 mu_mode = parameter_dict['mu_mode']
 max_iter_mode_choice = parameter_dict['max_iter_mode_choice']
 plot = True
+
 size_od = max(node_df['node']) + 1
 
 od_df = generate_od_df(size_od, od_scenario="RANDOM_OD", max_demand=200)
