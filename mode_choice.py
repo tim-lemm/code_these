@@ -34,7 +34,7 @@ max_iter_mode_choice = parameter_dict['max_iter_mode_choice']
 plot = True
 size_od = max(node_df['node']) + 1
 
-od_df = generate_od_df(size_od, od_scenario="RANDOM_OD", max_demand=300)
+od_df = generate_od_df(size_od, od_scenario="RANDOM_OD", max_demand=200)
 
 result_df, updated_od_car, updated_od_bike = mode_choice(edge_df,
                                                          node_df,

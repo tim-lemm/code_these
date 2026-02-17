@@ -5,7 +5,7 @@ def parameter (name_parameter = "all"):
                       'ASC_car':0,
                       'mu_mode':1,
                       'beta_time':-0.01,
-                      'max_iter_mode_choice':5,
+                      'max_iter_mode_choice':10,
         #traffic assignement
                       'ta_due_algorithm':'bfw',
                       'ta_sto_algorithm': 'bfsle',

@@ -1,12 +1,9 @@
 import networkx as nx
-import numpy as np
-import pandas as pd
 from plotting import *
 from od_matrix_generator import *
 from eaquilibrea_interface import *
 from network_processing import *
 from src.utils_sta import ta_due, ta_stochastic
-from config import parameter
 
 def _create_empty_skim_matrice (size_od:int):
     return np.zeros((size_od, size_od))
