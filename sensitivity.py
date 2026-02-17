@@ -11,12 +11,12 @@ from traffic import *
 
 CURRENT_DIR = ""
 
-edge_df, node_df = import_network(CURRENT_DIR + "data/edges_small_grid_2.csv", CURRENT_DIR + "data/nodes_small_grid_2.csv")
+edge_df, node_df = import_network(CURRENT_DIR + "data/edges_small_grid_2.csv", CURRENT_DIR + "data/nodes_small_grid_2.csv", capacity_car=1000)
 
 list_od_scenarios=['1OD','2OD',"RANDOM_OD"]
-list_max_demand = [500,1000,2000,3000,4000,5000]
-
-### Processing sensitivity analysis on ta_due
+list_max_demand = [100,200,300,400,500,750,1000,1250,1500,1750,2000,2250]
+#
+# ### Processing sensitivity analysis on ta_due
 list_algorithm = ['bfw', 'fw', 'msa']
 
 # df_results = pd.DataFrame()
@@ -36,11 +36,11 @@ list_algorithm = ['bfw', 'fw', 'msa']
 #                                     capacity_field='capacity_cars',
 #                                     verbose=True)
 #             df_results[name] = results_ta_due
-
+#
 # df_results.to_json(f"{CURRENT_DIR}output/sensitivity_due.json")
-
-###processing sensitivity analysis on ta_sto
-
+#
+# ##processing sensitivity analysis on ta_sto
+#
 # list_algorithm = ['bfsle', 'lp']
 # list_max_route = [1,2,3,4,5]
 # df_results = pd.DataFrame()
@@ -64,10 +64,10 @@ list_algorithm = ['bfw', 'fw', 'msa']
 #                 df_results[name] = results_ta_sto
 #
 # df_results.to_json(f"{CURRENT_DIR}output/sensitivity_sto.json")
-
-
-### getting total demand from the different scenario of OD
-
+#
+#
+# ## getting total demand from the different scenario of OD
+#
 # df_demand = pd.DataFrame(columns=['scenario','max_demand','total_demand'])
 #
 # rows_list = []
@@ -82,8 +82,8 @@ list_algorithm = ['bfw', 'fw', 'msa']
 # df_demand = pd.DataFrame(rows_list)
 #
 # df_demand.to_json(f"{CURRENT_DIR}output/demand.json")
-
-### Processing mode_choice sensitivity
+# #
+# ### Processing mode_choice sensitivity
 # parameters for mode choice
 list_asc_bike = [-2.5,-1,0]
 beta_time = -0.01
@@ -93,49 +93,56 @@ max_iter_mode_choice = 5
 plot = False
 size_od = 17
 
-# df_results_mc = pd.DataFrame()
-#
-# for ASC_bike in list_asc_bike:
-#     for scenario in list_od_scenarios:
-#         for max_demand in list_max_demand:
-#             name = f"{scenario}_{max_demand}_{ASC_bike}"
-#             od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
-#             od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
-#
-#             result_df,_,_ = mode_choice(edge_df,
-#                                         node_df,
-#                                         od_df,
-#                                         beta_time=beta_time,
-#                                         mu_mode=mu_mode,
-#                                         max_iter_mode_choice=max_iter_mode_choice,
-#                                         ASC_bike=ASC_bike,
-#                                         plot=plot)
-#             df_results_mc[name] = {"results_df":result_df}
-#
-# df_results_mc.to_json(f"{CURRENT_DIR}output/sensitivity_mc.json")
+df_results_mc = pd.DataFrame()
+
+for ASC_bike in list_asc_bike:
+    for scenario in list_od_scenarios:
+        for max_demand in list_max_demand:
+            name = f"{scenario}_{max_demand}_{ASC_bike}"
+            od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
+            od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+
+            result_df,_,_ = mode_choice_2(edge_df,
+                                        node_df,
+                                        od_df,
+                                        beta_time=beta_time,
+                                        mu_mode=mu_mode,
+                                        max_iter_mode_choice=max_iter_mode_choice,
+                                        ASC_bike=ASC_bike,
+                                        plot=plot)
+            df_results_mc[name] = {"results_df":result_df}
+
+df_results_mc.to_json(f"{CURRENT_DIR}output/sensitivity_mc.json")
 
 
-# max_demand = 5000
-# df_results_mc_beta = pd.DataFrame()
-# list_beta_time = [-0.0001, -0.001, -0.01, -0.1]
-# for scenario in list_od_scenarios:
-#     for ASC_bike in list_asc_bike:
-#         for beta_time in list_beta_time:
-#             name = f'{scenario}_{max_demand}_{ASC_bike}_{beta_time}'
-#             od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
-#             od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
-#
-#             result_df, _, _ = mode_choice(edge_df,
-#                                           node_df,
-#                                           od_df,
-#                                           beta_time=beta_time,
-#                                           mu_mode=mu_mode,
-#                                           max_iter_mode_choice=max_iter_mode_choice,
-#                                           ASC_bike=ASC_bike,
-#                                           plot=plot)
-#             df_results_mc_beta[name] = {"results_df":result_df}
-#
-# df_results_mc_beta.to_json(f"{CURRENT_DIR}output/sensitivity_mc_beta.json")
+list_asc_bike = [-2.5,-1,0]
+beta_time = -0.01
+ASC_car = 0
+mu_mode = 1.0
+max_iter_mode_choice = 5
+plot = False
+size_od = 17
+max_demand = 500
+df_results_mc_beta = pd.DataFrame()
+list_beta_time = [-0.0001, -0.001, -0.01, -0.1]
+for scenario in list_od_scenarios:
+    for ASC_bike in list_asc_bike:
+        for beta_time in list_beta_time:
+            name = f'{scenario}_{max_demand}_{ASC_bike}_{beta_time}'
+            od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
+            od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+
+            result_df, _, _ = mode_choice_2(edge_df,
+                                          node_df,
+                                          od_df,
+                                          beta_time=beta_time,
+                                          mu_mode=mu_mode,
+                                          max_iter_mode_choice=max_iter_mode_choice,
+                                          ASC_bike=ASC_bike,
+                                          plot=plot)
+            df_results_mc_beta[name] = {"results_df":result_df}
+
+df_results_mc_beta.to_json(f"{CURRENT_DIR}output/sensitivity_mc_beta.json")
 
 
 # ASC_bike = -2.5
@@ -148,7 +155,7 @@ size_od = 17
 #     od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
 #     od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
 #     name = f'{scenario}_{max_demand}_{ASC_bike}_mc1'
-#     result_df, _, _ = mode_choice(edge_df,
+#     result_df, _, _ = mode_choice_2(edge_df,
 #                                 node_df,
 #                                 od_df,
 #                                 beta_time=beta_time,
@@ -214,8 +221,8 @@ size_od = 17
 #     df_results_mc_order[name] = {"results_df": result_df}
 #
 # df_results_mc_order.to_json(f"{CURRENT_DIR}output/sensitivity_mc_order.json")
-#
-##test with mc_4
+
+#test with mc_4
 #== ta_due_field ==
 # ASC_bike = -2.5
 # beta_time = -0.01
@@ -247,32 +254,118 @@ size_od = 17
 
 #== skim field ==
 
+# ASC_bike = -2.5
+# beta_time = -0.01
+# scenario = "RANDOM_OD"
+# list_cost_bike = ["travel_time_bike", "free_flow_time_bike","length", "length_bi"]
+# list_cost_car = ["travel_time_car","free_flow_time_car", "length"]
+#
+# df_results_skim_cost = pd.DataFrame()
+# for max_demand in list_max_demand:
+#     od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
+#     od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+#     for cost_bike in list_cost_bike:
+#         for cost_car in list_cost_car:
+#             name = f'{scenario}_{max_demand}_{ASC_bike}_{cost_bike}_{cost_car}'
+#             result_df, _, _ = mode_choice_4(edge_df,
+#                                                     node_df,
+#                                                     od_df,
+#                                                     beta_time=beta_time,
+#                                                     mu_mode=mu_mode,
+#                                                     max_iter_mode_choice=max_iter_mode_choice,
+#                                                     ASC_bike=ASC_bike,
+#                                                     plot=plot,
+#                                                     skim_cost_car_field=cost_car,
+#                                                     skim_cost_bike_field=cost_bike
+#                                                     )
+#             df_results_skim_cost[name] = {"results_df":result_df}
+#
+# df_results_skim_cost.to_json(f"{CURRENT_DIR}output/sensitivity_mc_skim_cost.json")
+#
+# ASC_bike = -2.5
+# beta_time = -0.01
+# scenario = "RANDOM_OD"
+# max_iter_mode_choice = 10
+# size_od = 17
+# mu_mode = 1
+# plot = False
+#
+# df_results_mc_order = pd.DataFrame()
+#
+# for max_demand in list_max_demand:
+#     od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
+#     od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+#     name = f'{scenario}_{max_demand}_{ASC_bike}_mc1'
+#     result_df, _, _ = mode_choice(edge_df,
+#                                 node_df,
+#                                 od_df,
+#                                 beta_time=beta_time,
+#                                 mu_mode=mu_mode,
+#                                 max_iter_mode_choice=max_iter_mode_choice,
+#                                 ASC_bike=ASC_bike,
+#                                 plot=plot)
+#     df_results_mc_order[name] = {"results_df":result_df}
+#
+#     name = f'{scenario}_{max_demand}_{ASC_bike}_mc2'
+#     result_df, _, _ = mode_choice_2(edge_df,
+#                                 node_df,
+#                                 od_df,
+#                                 beta_time=beta_time,
+#                                 mu_mode=mu_mode,
+#                                 max_iter_mode_choice=max_iter_mode_choice,
+#                                 ASC_bike=ASC_bike,
+#                                 plot=plot)
+#     df_results_mc_order[name] = {"results_df":result_df}
+#
+#     name = f'{scenario}_{max_demand}_{ASC_bike}_mc4'
+#     result_df, _, _ = mode_choice_4(edge_df,
+#                                     node_df,
+#                                     od_df,
+#                                     beta_time=beta_time,
+#                                     mu_mode=mu_mode,
+#                                     max_iter_mode_choice=max_iter_mode_choice,
+#                                     ASC_bike=ASC_bike,
+#                                     plot=plot)
+#     df_results_mc_order[name] = {"results_df":result_df}
+#
+#     name = f'{scenario}_{max_demand}_{ASC_bike}_mc3'
+#     result_df, _, _ = mode_choice_3(edge_df,
+#                                     node_df,
+#                                     od_df,
+#                                     beta_time=beta_time,
+#                                     mu_mode=mu_mode,
+#                                     max_iter_mode_choice=max_iter_mode_choice,
+#                                     ASC_bike=ASC_bike,
+#                                     plot=plot)
+#     df_results_mc_order[name] = {"results_df": result_df}
+#
+# df_results_mc_order.to_json(f"{CURRENT_DIR}output/sensitivity_mc_order_2.json")
 
 ASC_bike = -2.5
 beta_time = -0.01
-scenario = "RANDOM_OD"
-list_cost_bike = ["travel_time_bike", "free_flow_time_bike","length", "length_bi"]
-list_cost_car = ["travel_time_car","free_flow_time_car", "length"]
+list_od_scenarios = ["1OD", "RANDOM_OD"]
+max_iter_mode_choice = 10
+size_od = 17
+mu_mode = 1
+plot = False
+list_weight = [0.49, 0.48, 0.47, 0.46, 0.45, 0.44, 0.43, 0.42, 0.41, 0.4, 0.35, 0.3, 0.25, 0.2, 0.15, 0.1, 0.05, 0, -0.05, -0.1, -0.15]
+df_results_mc_weight_bi = pd.DataFrame()
 
-df_results_skim_cost = pd.DataFrame()
-for max_demand in list_max_demand:
-    od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
-    od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
-    for cost_bike in list_cost_bike:
-        for cost_car in list_cost_car:
-            name = f'{scenario}_{max_demand}_{ASC_bike}_{cost_bike}_{cost_car}'
-            result_df, _, _ = mode_choice_4(edge_df,
-                                                    node_df,
-                                                    od_df,
-                                                    beta_time=beta_time,
-                                                    mu_mode=mu_mode,
-                                                    max_iter_mode_choice=max_iter_mode_choice,
-                                                    ASC_bike=ASC_bike,
-                                                    plot=plot,
-                                                    skim_cost_car_field=cost_car,
-                                                    skim_cost_bike_field=cost_bike
-                                                    )
-            df_results_skim_cost[name] = {"results_df":result_df}
+for scenario in list_od_scenarios:
+    for max_demand in list_max_demand:
+        for weight in list_weight:
+            od_df = generate_od_df(size_od, od_scenario=scenario, max_demand=max_demand)
+            od_df_eaq = convert_to_eaquilibrae_od_matrix(od_df)
+            name = f'{scenario}_{max_demand}_{ASC_bike}_{weight}'
+            result_df, _, _ = mode_choice_2(edge_df,
+                                        node_df,
+                                        od_df,
+                                        beta_time=beta_time,
+                                        mu_mode=mu_mode,
+                                        max_iter_mode_choice=max_iter_mode_choice,
+                                        ASC_bike=ASC_bike,
+                                        plot=plot,
+                                        weight_bi=weight)
+            df_results_mc_weight_bi[name] = {"results_df":result_df}
 
-df_results_skim_cost.to_json(f"{CURRENT_DIR}output/sensitivity_mc_skim_cost.json")
-#TODO: test with different version of mode_choice (order, weights etc...)
+df_results_mc_weight_bi.to_json(f"{CURRENT_DIR}output/sensitivity_mc_weight_bi.json")

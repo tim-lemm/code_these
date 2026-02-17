@@ -24,7 +24,9 @@ def create_empty_result_df_mc()-> pd.DataFrame:
                         'total_travel_time_car': [np.nan],
                         'total_travel_time_bike': [np.nan],
                         'travel_time_per_car': [np.nan],
-                        'travel_time_per_bike': [np.nan]})
+                        'travel_time_per_bike': [np.nan],
+                         'total_car_skim': [np.nan],
+                         'total_bike_skim': [np.nan]})
 
 def update_result_df_mc (results_df:pd.DataFrame,
                          j,
@@ -38,6 +40,8 @@ def update_result_df_mc (results_df:pd.DataFrame,
     results_df.loc[j - 1, 'modal_share_bike'] = modal_share_bike
     results_df.loc[j - 1, 'total_travel_time_car'] = total_travel_time_car
     results_df.loc[j - 1, 'travel_time_per_car'] = total_travel_time_car / total_car_skim
+    results_df.loc[j - 1, 'total_car_skim'] = total_car_skim
+    results_df.loc[j - 1, 'total_bike_skim'] = total_bike_skim
     return results_df
 
 def utility_car(dist, ASC, beta_time):
@@ -287,7 +291,8 @@ def mode_choice_2(edge_df, node_df, od_df,
                     ASC_bike=-2.5,
                     mu_mode=1.0,
                     max_iter_mode_choice=3,
-                    plot=True):
+                    plot=True,
+                    weight_bi = 0):
     od_matrix = convert_od_df_to_matrix(od_df)
     size_od = len(od_matrix)
     results_df = create_empty_result_df_mc()
@@ -356,7 +361,7 @@ def mode_choice_2(edge_df, node_df, od_df,
 
         # calculate congested time for cars and length bi
         update_network(edge_df, flow_name='flow_car', free_flow_time_name='free_flow_time_car',
-                       capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15, beta=4)
+                       capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15, beta=4, weight=weight_bi)
 
         results_df = update_result_df_mc(results_df, j, modal_share_car, modal_share_bike, total_travel_time_car,
                                          total_car_skim, total_bike_skim)
@@ -639,7 +644,8 @@ def mode_choice_4(edge_df, node_df, od_df,
                   ta_due_time_field = "free_flow_time_car",
                   ta_due_cost_field = "travel_time_car",
                   skim_cost_car_field = "travel_time_car",
-                  skim_cost_bike_field = "travel_time_bike"):
+                  skim_cost_bike_field = "travel_time_bike",
+                  weight_bi = 0):
     edge_df_work = edge_df.copy()
     od_matrix = convert_od_df_to_matrix(od_df)
     size_od = len(od_matrix)
@@ -691,7 +697,7 @@ def mode_choice_4(edge_df, node_df, od_df,
 
         # calculate congested time for cars and length bi
         update_network(edge_df_work, flow_name='flow_car', free_flow_time_name='free_flow_time_car',
-                       capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15, beta=4)
+                       capacity_name="capacity_cars", congested_time_name='travel_time_car', alpha=0.15, beta=4, weight=weight_bi)
 
         results_df = update_result_df_mc(results_df, j, modal_share_car, modal_share_bike, total_travel_time_car,
                                          total_car_skim, total_bike_skim)

@@ -12,20 +12,22 @@ def calculate_length(node_df, edge_df):
         lengths.append(length)
     return edge_df.assign(length=lengths)
 
-def calculate_length_bi(edge_df):
+def calculate_length_bi(edge_df, weight = 0):
+    if weight > 0.5 or weight < -0.2 :
+        raise ValueError("Weight must be between 0.5 and -0.2")
     list_length_bi = []
     for row in edge_df.itertuples():
         if row.type_bike is None:
             if row.flow_car < 800:
-                list_length_bi.append(row.length * 0.8)
+                list_length_bi.append(row.length * (0.8 - weight))
             elif row.flow_car >= 4000:
-                list_length_bi.append(row.length * 1.4)
+                list_length_bi.append(row.length * (1.4 + weight))
             elif 800 <= row.flow_car < 1000:
                 list_length_bi.append(row.length * 1)
             elif 1000 <= row.flow_car < 4000:
-                list_length_bi.append(row.length * 1.2)
+                list_length_bi.append(row.length * (1.2 + weight))
         else:
-            list_length_bi.append(row.length * 0.5)
+            list_length_bi.append(row.length * (0.5 - weight))
     edge_df["length_bi"] = list_length_bi
     return edge_df
 
@@ -42,9 +44,9 @@ def calculate_congested_time(edge_df, free_flow_time_name="free_flow_time", cong
     edge_df[congested_time_name]=edge_df[free_flow_time_name]*(1+alpha*(edge_df[flow_name]/edge_df[capacity_name])**beta)
     return edge_df
 
-def update_network(edge_df, free_flow_time_name="free_flow_time_car", congested_time_name="congested_time", flow_name="flow", capacity_name="capacity", alpha=0.15, beta=4):
+def update_network(edge_df, free_flow_time_name="free_flow_time_car", congested_time_name="congested_time", flow_name="flow", capacity_name="capacity", alpha=0.15, beta=4, weight = 0):
     edge_df = calculate_congested_time(edge_df, free_flow_time_name, congested_time_name, flow_name, capacity_name, alpha, beta)
-    edge_df = calculate_length_bi(edge_df)
+    edge_df = calculate_length_bi(edge_df, weight=weight)
     edge_df["travel_time_bike"] = edge_df["length_bi"]/edge_df["speed_bike"]
     return edge_df
 
